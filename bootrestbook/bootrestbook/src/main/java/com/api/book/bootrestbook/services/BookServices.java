@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class BookServices {
@@ -17,8 +18,6 @@ public class BookServices {
         list.add(new Book(13, "Java Book", "James Gosling"));
         list.add(new Book(14, "Rich Dad Poor Dad", "Robert Kiyoaski"));
         list.add(new Book(15, "Scala Book", "Martin Odersky"));
-        list.add(new Book(16, "Java Book", "James Gosling"));
-        list.add(new Book(17, "Rich Dad Poor Dad", "Robert Kiyoaski"));
     }
 
     //create method
@@ -49,7 +48,22 @@ public class BookServices {
     public Book addBook(Book b) {
         list.add(b);
         return b;
+    }
+
+    //delete book method
+    public void deleteBook(int bid) {
+        list = list.stream().filter(book -> book.getId() != bid).collect(Collectors.toList());
 
     }
 
+    //put book method
+    public void updateBook(Book book, int bookId) {
+        list = list.stream().map(b -> {
+            if (b.getId() == bookId) {
+                b.setTitle(book.getTitle());
+                b.setAuthor(book.getAuthor());
+            }
+            return b;
+        }).collect(Collectors.toList());
+    }
 }
