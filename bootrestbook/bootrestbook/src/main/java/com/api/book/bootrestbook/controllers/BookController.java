@@ -37,12 +37,26 @@ public class BookController {
         return ResponseEntity.of(Optional.of(book));
     }
 
-
     //adding book method
     @PostMapping("/books")
     public Book addBook(@RequestBody Book book) {
         Book b = this.bookServices.addBook(book);
         return b;
+    }
+
+
+    //delete book handler
+    @DeleteMapping("/books/{bookId}")
+    public void deleteBook(@PathVariable("bookId") int bookId) {
+        this.bookServices.deleteBook(bookId);
+    }
+
+    //put book handler update
+    @PutMapping("/books/{bookId}")
+    public Book updateBook(@RequestBody Book book, @PathVariable
+            ("bookId") int bookId) {
+        this.bookServices.updateBook(book, bookId);
+        return book;
     }
 
 }

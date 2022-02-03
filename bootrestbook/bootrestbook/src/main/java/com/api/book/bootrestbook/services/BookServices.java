@@ -18,6 +18,7 @@ public class BookServices {
         list.add(new Book(13, "Java Book", "James Gosling"));
         list.add(new Book(14, "Rich Dad Poor Dad", "Robert Kiyoaski"));
         list.add(new Book(15, "Scala Book", "Martin Odersky"));
+        list.add(new Book(123, "Bhagavad Gita", "Maharishi Veda Vyasa"));
     }
 
     //create method
