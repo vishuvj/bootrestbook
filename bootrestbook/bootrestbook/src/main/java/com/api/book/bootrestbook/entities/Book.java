@@ -1,5 +1,7 @@
 package com.api.book.bootrestbook.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,7 @@ public class Book {
     private String title;
 
     @OneToOne(cascade = CascadeType.ALL) // use cascade save author id before before details
+    @JsonManagedReference // doesn't show repetition details
     private Author author;
 
 
