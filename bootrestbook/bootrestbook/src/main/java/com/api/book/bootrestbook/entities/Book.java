@@ -2,8 +2,6 @@ package com.api.book.bootrestbook.entities;
 
 import javax.persistence.*;
 
-
-
 @Entity
 @Table(name="books")
 public class Book {
