@@ -26,14 +26,14 @@ public class BookController {
 //    }
 
     //for change status
-    public ResponseEntity<List<Book>> getBooks() {
+    public ResponseEntity getBooks() {
         List list = bookServices.getAllBooks();
 
         //if there is no data then show status 404 Not_found
         if (list.size() <= 0) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // build create a new object
         } else {
-            return ResponseEntity.of(Optional.of(list));
+            return ResponseEntity.status(HttpStatus.CREATED).body(list);
         }
     }
 
